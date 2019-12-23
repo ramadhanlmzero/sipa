@@ -259,14 +259,6 @@
             this.categoryChart()
             this.roomChart()
             this.archiveChart(this.selectedYear)
-            // axios.get('api/dashboardapi').then(response => {
-            //     this.dashboard = response.data
-            //     for (var i = 0; i < this.dashboard.notification.length; i++) {
-            //         for (var j = 0; j < this.dashboard.notification[i].c_racks.length; j++) {
-            //             this.countnotif += this.dashboard.notification[i].c_racks[j].c_archives.length
-            //         }
-            //     }
-            // })
         },
         beforeDestroy() {
             clearInterval(this.interval)

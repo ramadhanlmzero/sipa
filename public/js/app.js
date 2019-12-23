@@ -4731,14 +4731,7 @@ __webpack_require__.r(__webpack_exports__);
     this.selectedYear = moment__WEBPACK_IMPORTED_MODULE_1___default()().format('YYYY');
     this.categoryChart();
     this.roomChart();
-    this.archiveChart(this.selectedYear); // axios.get('api/dashboardapi').then(response => {
-    //     this.dashboard = response.data
-    //     for (var i = 0; i < this.dashboard.notification.length; i++) {
-    //         for (var j = 0; j < this.dashboard.notification[i].c_racks.length; j++) {
-    //             this.countnotif += this.dashboard.notification[i].c_racks[j].c_archives.length
-    //         }
-    //     }
-    // })
+    this.archiveChart(this.selectedYear);
   },
   beforeDestroy: function beforeDestroy() {
     clearInterval(this.interval);
@@ -116732,8 +116725,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! e:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! e:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
