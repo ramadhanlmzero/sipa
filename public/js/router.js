@@ -65910,7 +65910,9 @@ var render = function() {
                                   _vm._v(_vm._s(archive.c_user.name) + " ")
                                 ]),
                                 _vm._v(
-                                  "memasukkan arsip ke ruang " +
+                                  "memasukkan arsip " +
+                                    _vm._s(archive.title) +
+                                    " ke ruang " +
                                     _vm._s(value.name) +
                                     " anda"
                                 )
@@ -86365,7 +86367,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! e:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\router.js */"./resources/js/router.js");
+module.exports = __webpack_require__(/*! E:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\router.js */"./resources/js/router.js");
 
 
 /***/ })
