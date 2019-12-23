@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Rack;
+use App\Model\Archive;
 use App\User;
 
 class Room extends Model
@@ -21,5 +22,10 @@ class Room extends Model
     public function cUser()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function cArchives()
+    {
+        return $this->hasManyThrough(Archive::class, Rack::class);
     }
 }

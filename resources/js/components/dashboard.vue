@@ -61,8 +61,10 @@
                         <div class="d-flex justify-content-between">
                             <h4 class="card-title">Aktivitas Pengunggahan Arsip</h4>
                         </div>
-                        <p v-if="dashboard.activity_create" class="card-description">{{ dashboard.log.length }} aktivitas unggah arsip terakhir</p>
-                        <p v-else class="card-description">Tidak ada aktivitas apapun</p>
+                        <template v-if="dashboard.log">
+                            <p v-if="dashboard.log.length > 0" class="card-description">{{ dashboard.log.length }} aktivitas unggah arsip terakhir</p>
+                            <p v-else class="card-description">Tidak ada aktivitas apapun</p>
+                        </template>
                         <div class="list d-flex align-items-center border-bottom py-3" v-for="(value, counter) in dashboard.log" :key="counter">
                             <img class="img-sm rounded-circle" src="/assets/images/admin-pic.png">
                             <div class="wrapper w-100 ml-3">
@@ -86,7 +88,7 @@
                             <h4 class="card-title">Notifikasi untuk Anda</h4>
                         </div>
                         <template v-if="dashboard.notification">
-                            <p v-if="dashboard.notification.length > 0" class="card-description">Top 5 notifikasi untuk anda</p>
+                            <p v-if="dashboard.notification.length > 0" class="card-description">Ada {{ dashboard.notification.length }} notifikasi untuk anda</p>
                             <p v-else class="card-description">Tidak ada notifikasi apapun</p>
                         </template>
                         <div v-for="(value, counter) in dashboard.notification" :key="counter">
@@ -122,17 +124,17 @@
             <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body" id="canvasRack">
-                        <h4 class="card-title">Grafik Arsip per Rak</h4>
-                        <canvas id="rackChart"></canvas>
+                        <h4 class="card-title">Grafik Arsip per Ruangan</h4>
+                        <canvas id="roomChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" v-if="$auth.user().role.type === 'Admin'">
+        <div class="row">
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body pb-0">
-                        <h4 class="card-title">Petugas dengan Input Arsip Terbanyak</h4>
+                        <h4 class="card-title">Staf TU dengan Input Arsip Terbanyak</h4>
                         <div class="row">
                             <div class="col-12" v-for="(value, counter) in dashboard.active" :key="counter">
                                 <div class="wrapper border-bottom py-2">
@@ -140,7 +142,7 @@
                                         <img class="img-sm rounded-circle" src="/assets/images/admin-pic.png">
                                         <div class="wrapper ml-4">
                                             <p class="mb-0">{{ value.name }}</p>
-                                            <small class="text-muted mb-0">Petugas</small>
+                                            <small class="text-muted mb-0">Staf Tata Usaha</small>
                                         </div>
                                         <div class="rating ml-auto d-flex align-items-center">
                                             <p class="font-weight-medium mb-0">{{ value.c_archives_count }} Arsip</p>
@@ -243,9 +245,9 @@
                 $('#categoryChart').remove()
                 $('#canvasCategory').append('<canvas id="categoryChart" ><canvas>')
                 this.categoryChart()
-                $('#rackChart').remove()
-                $('#canvasRack').append('<canvas id="rackChart" ><canvas>')
-                this.rackChart()
+                $('#roomChart').remove()
+                $('#canvasRack').append('<canvas id="roomChart" ><canvas>')
+                this.roomChart()
                 $('#archiveChart').remove()
                 $('#canvasChart').append('<canvas id="archiveChart" ><canvas>')
                 this.archiveChart(this.selectedYear)
@@ -253,7 +255,7 @@
             moment.locale('id')
             this.selectedYear = moment().format('YYYY')
             this.categoryChart()
-            this.rackChart()
+            this.roomChart()
             this.archiveChart(this.selectedYear)
         },
         beforeDestroy() {
@@ -311,18 +313,18 @@
                     })
                 })
             },
-            rackChart() {
+            roomChart() {
                 axios.get('api/chartapi').then(response => {
-                    this.rack = response.data
-                    var ctx = document.getElementById('rackChart')
+                    this.room = response.data
+                    var ctx = document.getElementById('roomChart')
                     ctx.height = 220
                     var myChart = new Chart(ctx, {
                         type: 'horizontalBar',
                         data: {
-                            labels: this.rack.rack.name,
+                            labels: this.room.room.name,
                             datasets: [{
                                 label: 'Jumlah Arsip',
-                                data: this.rack.rack.total,
+                                data: this.room.room.total,
                                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                                 borderColor: 'rgba(255,99,132,1)',
                                 borderWidth: 1
@@ -353,7 +355,7 @@
                                     display: true,
                                     scaleLabel: {
                                         display: true,
-                                        labelString: 'Rak'
+                                        labelString: 'Ruang'
                                     }
                                 }]
                             }

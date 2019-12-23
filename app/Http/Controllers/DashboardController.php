@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $count = [
             'user' => User::count(),
             'archive' => Archive::count(),
@@ -19,25 +20,25 @@ class DashboardController extends Controller
             'rack' => Rack::count(),
             'yourarchive' => Archive::where("created_by", Auth::user()->id)->count(),
             'log' => Archive::with('cUser')->orderBy('created_at', 'DESC')->take(5)->get(),
-            'activity_create' => Archive::whereColumn('created_at', 'updated_at')->take(5)->count(),
             'notification' => Room::with('cRacks')->where('user_id', auth()->user()->id)->whereHas('cRacks', function ($query) {
                 $query->whereHas('cArchives', function ($query2) {
-                    $query2->where('status', 'Belum Dikonfirmasi')->take(5);
+                    $query2->where('status', 'Belum Dikonfirmasi');
                 });
-            })->get(),
+            })->take(5)->get(),
             'active' => User::whereHas('cRoles', function ($q) {
-                $q->where('type', 'Petugas');
+                $q->where('type', 'Staf Tata Usaha');
             })->withCount('cArchives')->orderBy('c_archives_count', 'DESC')->orderBy('name', 'ASC')->take(5)->get(),
-            'status_false' => Archive::where('status', 'false')->count(),
-            'status_true' => Archive::where('status', 'true')->count(),
-            'timestamp_false' => Archive::where('status', 'false')->orderBy('updated_at', 'DESC')->first('updated_at'),
-            'timestamp_true' => Archive::where('status', 'true')->orderBy('updated_at', 'DESC')->first('updated_at'),
+            'status_false' => Archive::where('status', 'Belum Dikonfirmasi')->count(),
+            'status_true' => Archive::where('status', 'Sudah Dikonfirmasi')->count(),
+            'timestamp_false' => Archive::where('status', 'Belum Dikonfirmasi')->orderBy('updated_at', 'DESC')->first('updated_at'),
+            'timestamp_true' => Archive::where('status', 'Sudah Dikonfirmasi')->orderBy('updated_at', 'DESC')->first('updated_at'),
             'year' => Archive::selectRaw('extract(year from created_at) as year')->distinct()->orderBy('year', 'DESC')->get()
         ];
         return $count;
     }
 
-    public function chart() {
+    public function chart()
+    {
         $category = [
             'name' => Category::pluck('name'),
             'total' => Category::withCount('cArchives')->pluck('c_archives_count')
@@ -46,14 +47,20 @@ class DashboardController extends Controller
             'name' => Rack::pluck('name'),
             'total' => Rack::withCount('cArchives')->pluck('c_archives_count')
         ];
+        $room = [
+            'name' => Room::pluck('name'),
+            'total' => Room::withCount('cArchives')->pluck('c_archives_count')
+        ];
         $data = [
             'category' => $category,
-            'rack' => $rack
+            'rack' => $rack,
+            'room' => $room
         ];
         return $data;
     }
 
-    public function chart2($year) {
+    public function chart2($year)
+    {
         $data = [
             Archive::whereYear('created_at', $year)->whereMonth('created_at', 1)->count(),
             Archive::whereYear('created_at', $year)->whereMonth('created_at', 2)->count(),

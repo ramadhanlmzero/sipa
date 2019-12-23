@@ -4695,6 +4695,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4716,9 +4718,9 @@ __webpack_require__.r(__webpack_exports__);
       $('#categoryChart').remove();
       $('#canvasCategory').append('<canvas id="categoryChart" ><canvas>');
       this.categoryChart();
-      $('#rackChart').remove();
-      $('#canvasRack').append('<canvas id="rackChart" ><canvas>');
-      this.rackChart();
+      $('#roomChart').remove();
+      $('#canvasRack').append('<canvas id="roomChart" ><canvas>');
+      this.roomChart();
       $('#archiveChart').remove();
       $('#canvasChart').append('<canvas id="archiveChart" ><canvas>');
       this.archiveChart(this.selectedYear);
@@ -4726,7 +4728,7 @@ __webpack_require__.r(__webpack_exports__);
     moment__WEBPACK_IMPORTED_MODULE_1___default.a.locale('id');
     this.selectedYear = moment__WEBPACK_IMPORTED_MODULE_1___default()().format('YYYY');
     this.categoryChart();
-    this.rackChart();
+    this.roomChart();
     this.archiveChart(this.selectedYear);
   },
   beforeDestroy: function beforeDestroy() {
@@ -4791,20 +4793,20 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    rackChart: function rackChart() {
+    roomChart: function roomChart() {
       var _this2 = this;
 
       axios.get('api/chartapi').then(function (response) {
-        _this2.rack = response.data;
-        var ctx = document.getElementById('rackChart');
+        _this2.room = response.data;
+        var ctx = document.getElementById('roomChart');
         ctx.height = 220;
         var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(ctx, {
           type: 'horizontalBar',
           data: {
-            labels: _this2.rack.rack.name,
+            labels: _this2.room.room.name,
             datasets: [{
               label: 'Jumlah Arsip',
-              data: _this2.rack.rack.total,
+              data: _this2.room.room.total,
               backgroundColor: 'rgba(255, 99, 132, 0.2)',
               borderColor: 'rgba(255,99,132,1)',
               borderWidth: 1
@@ -4840,7 +4842,7 @@ __webpack_require__.r(__webpack_exports__);
                 display: true,
                 scaleLabel: {
                   display: true,
-                  labelString: 'Rak'
+                  labelString: 'Ruang'
                 }
               }]
             }
@@ -95820,16 +95822,20 @@ var render = function() {
             [
               _vm._m(0),
               _vm._v(" "),
-              _vm.dashboard.activity_create
-                ? _c("p", { staticClass: "card-description" }, [
-                    _vm._v(
-                      _vm._s(_vm.dashboard.log.length) +
-                        " aktivitas unggah arsip terakhir"
-                    )
-                  ])
-                : _c("p", { staticClass: "card-description" }, [
-                    _vm._v("Tidak ada aktivitas apapun")
-                  ]),
+              _vm.dashboard.log
+                ? [
+                    _vm.dashboard.log.length > 0
+                      ? _c("p", { staticClass: "card-description" }, [
+                          _vm._v(
+                            _vm._s(_vm.dashboard.log.length) +
+                              " aktivitas unggah arsip terakhir"
+                          )
+                        ])
+                      : _c("p", { staticClass: "card-description" }, [
+                          _vm._v("Tidak ada aktivitas apapun")
+                        ])
+                  ]
+                : _vm._e(),
               _vm._v(" "),
               _vm._l(_vm.dashboard.log, function(value, counter) {
                 return _c(
@@ -95899,7 +95905,11 @@ var render = function() {
                 ? [
                     _vm.dashboard.notification.length > 0
                       ? _c("p", { staticClass: "card-description" }, [
-                          _vm._v("Top 5 notifikasi untuk anda")
+                          _vm._v(
+                            "Ada " +
+                              _vm._s(_vm.dashboard.notification.length) +
+                              " notifikasi untuk anda"
+                          )
                         ])
                       : _c("p", { staticClass: "card-description" }, [
                           _vm._v("Tidak ada notifikasi apapun")
@@ -96001,162 +96011,154 @@ var render = function() {
     _vm._v(" "),
     _vm._m(2),
     _vm._v(" "),
-    _vm.$auth.user().role.type === "Admin"
-      ? _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body pb-0" }, [
+            _c("h4", { staticClass: "card-title" }, [
+              _vm._v("Staf TU dengan Input Arsip Terbanyak")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.dashboard.active, function(value, counter) {
+                return _c("div", { key: counter, staticClass: "col-12" }, [
+                  _c("div", { staticClass: "wrapper border-bottom py-2" }, [
+                    _c("div", { staticClass: "d-flex" }, [
+                      _c("img", {
+                        staticClass: "img-sm rounded-circle",
+                        attrs: { src: "/assets/images/admin-pic.png" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "wrapper ml-4" }, [
+                        _c("p", { staticClass: "mb-0" }, [
+                          _vm._v(_vm._s(value.name))
+                        ]),
+                        _vm._v(" "),
+                        _c("small", { staticClass: "text-muted mb-0" }, [
+                          _vm._v("Staf Tata Usaha")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "rating ml-auto d-flex align-items-center"
+                        },
+                        [
+                          _c("p", { staticClass: "font-weight-medium mb-0" }, [
+                            _vm._v(_vm._s(value.c_archives_count) + " Arsip")
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 stretch-card" }, [
+        _c("div", { staticClass: "row flex-grow" }, [
+          _c("div", { staticClass: "col-12 grid-margin stretch-card" }, [
             _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body pb-0" }, [
-                _c("h4", { staticClass: "card-title" }, [
-                  _vm._v("Petugas dengan Input Arsip Terbanyak")
+              _c("div", { staticClass: "card-body" }, [
+                _c("h6", { staticClass: "card-title mb-0" }, [
+                  _vm._v("Arsip Telah Terkonfirmasi")
                 ]),
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "row" },
-                  _vm._l(_vm.dashboard.active, function(value, counter) {
-                    return _c("div", { key: counter, staticClass: "col-12" }, [
-                      _c("div", { staticClass: "wrapper border-bottom py-2" }, [
-                        _c("div", { staticClass: "d-flex" }, [
-                          _c("img", {
-                            staticClass: "img-sm rounded-circle",
-                            attrs: { src: "/assets/images/admin-pic.png" }
-                          }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "wrapper ml-4" }, [
-                            _c("p", { staticClass: "mb-0" }, [
-                              _vm._v(_vm._s(value.name))
-                            ]),
-                            _vm._v(" "),
-                            _c("small", { staticClass: "text-muted mb-0" }, [
-                              _vm._v("Petugas")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "rating ml-auto d-flex align-items-center"
-                            },
-                            [
-                              _c(
-                                "p",
-                                { staticClass: "font-weight-medium mb-0" },
-                                [
-                                  _vm._v(
-                                    _vm._s(value.c_archives_count) + " Arsip"
-                                  )
-                                ]
-                              )
-                            ]
-                          )
+                  {
+                    staticClass:
+                      "d-flex justify-content-between align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "d-inline-block pt-3" }, [
+                      _c("div", { staticClass: "d-lg-flex" }, [
+                        _c("h2", { staticClass: "mb-0" }, [
+                          _vm._v(_vm._s(_vm.dashboard.status_true))
                         ])
-                      ])
-                    ])
-                  }),
-                  0
+                      ]),
+                      _vm._v(" "),
+                      _vm.dashboard.timestamp_true
+                        ? _c("small", { staticClass: "text-gray" }, [
+                            _vm._v(
+                              "Update terakhir: " +
+                                _vm._s(
+                                  _vm.parseDate2(
+                                    _vm.dashboard.timestamp_true.updated_at
+                                  )
+                                )
+                            )
+                          ])
+                        : _c("small", { staticClass: "text-gray" }, [
+                            _vm._v(
+                              "Tidak ada arsip dengan status sudah terkonfirmasi"
+                            )
+                          ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ]
                 )
               ])
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 stretch-card" }, [
-            _c("div", { staticClass: "row flex-grow" }, [
-              _c("div", { staticClass: "col-12 grid-margin stretch-card" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h6", { staticClass: "card-title mb-0" }, [
-                      _vm._v("Arsip Telah Terkonfirmasi")
+          _c("div", { staticClass: "col-12 grid-margin stretch-card" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h6", { staticClass: "card-title mb-0" }, [
+                  _vm._v("Arsip Belum Terkonfirmasi")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-between align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "d-inline-block pt-3" }, [
+                      _c("div", { staticClass: "d-lg-flex" }, [
+                        _c("h2", { staticClass: "mb-0" }, [
+                          _vm._v(_vm._s(_vm.dashboard.status_false))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm.dashboard.timestamp_false
+                        ? _c("small", { staticClass: "text-gray" }, [
+                            _vm._v(
+                              "Update terakhir: " +
+                                _vm._s(
+                                  _vm.parseDate2(
+                                    _vm.dashboard.timestamp_false.updated_at
+                                  )
+                                )
+                            )
+                          ])
+                        : _c("small", { staticClass: "text-gray" }, [
+                            _vm._v(
+                              "Tidak ada arsip dengan status belum terkonfirmasi"
+                            )
+                          ])
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center"
-                      },
-                      [
-                        _c("div", { staticClass: "d-inline-block pt-3" }, [
-                          _c("div", { staticClass: "d-lg-flex" }, [
-                            _c("h2", { staticClass: "mb-0" }, [
-                              _vm._v(_vm._s(_vm.dashboard.status_true))
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _vm.dashboard.timestamp_true
-                            ? _c("small", { staticClass: "text-gray" }, [
-                                _vm._v(
-                                  "Update terakhir: " +
-                                    _vm._s(
-                                      _vm.parseDate2(
-                                        _vm.dashboard.timestamp_true.updated_at
-                                      )
-                                    )
-                                )
-                              ])
-                            : _c("small", { staticClass: "text-gray" }, [
-                                _vm._v(
-                                  "Tidak ada arsip dengan status sudah terkonfirmasi"
-                                )
-                              ])
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(3)
-                      ]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-12 grid-margin stretch-card" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h6", { staticClass: "card-title mb-0" }, [
-                      _vm._v("Arsip Belum Terkonfirmasi")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center"
-                      },
-                      [
-                        _c("div", { staticClass: "d-inline-block pt-3" }, [
-                          _c("div", { staticClass: "d-lg-flex" }, [
-                            _c("h2", { staticClass: "mb-0" }, [
-                              _vm._v(_vm._s(_vm.dashboard.status_false))
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _vm.dashboard.timestamp_false
-                            ? _c("small", { staticClass: "text-gray" }, [
-                                _vm._v(
-                                  "Update terakhir: " +
-                                    _vm._s(
-                                      _vm.parseDate2(
-                                        _vm.dashboard.timestamp_false.updated_at
-                                      )
-                                    )
-                                )
-                              ])
-                            : _c("small", { staticClass: "text-gray" }, [
-                                _vm._v(
-                                  "Tidak ada arsip dengan status belum terkonfirmasi"
-                                )
-                              ])
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(4)
-                      ]
-                    )
-                  ])
-                ])
+                    _vm._m(4)
+                  ]
+                )
               ])
             ])
           ])
         ])
-      : _vm._e(),
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12 grid-margin" }, [
@@ -96271,10 +96273,10 @@ var staticRenderFns = [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-body", attrs: { id: "canvasRack" } }, [
             _c("h4", { staticClass: "card-title" }, [
-              _vm._v("Grafik Arsip per Rak")
+              _vm._v("Grafik Arsip per Ruangan")
             ]),
             _vm._v(" "),
-            _c("canvas", { attrs: { id: "rackChart" } })
+            _c("canvas", { attrs: { id: "roomChart" } })
           ])
         ])
       ])
@@ -116714,8 +116716,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Lenovo\Downloads\SIPA\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Lenovo\Downloads\SIPA\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! e:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! e:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
