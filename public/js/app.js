@@ -3955,12 +3955,8 @@ __webpack_require__.r(__webpack_exports__);
               var html = '';
 
               for (var i = 0; i < _this3.user.length; i++) {
-                for (var j = 0; j < _this3.user[i].c_roles.length; j++) {
-                  if (_this3.user[i].c_roles[j].type != 'Admin') {
-                    var value = _this3.user[i].name;
-                    html += '<option value="' + value + '">' + value + '</option>';
-                  }
-                }
+                var value = _this3.user[i].name;
+                html += '<option value="' + value + '">' + value + '</option>';
               }
 
               var selectUser = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<select id="user" class="form-control"><option value="" selected>Pilih Semua</option></select>').appendTo('#selectUser').append(html).on('change', function () {
@@ -116725,8 +116721,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! e:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! e:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

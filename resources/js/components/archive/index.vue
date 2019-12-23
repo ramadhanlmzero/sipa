@@ -282,12 +282,8 @@
                                 this.user = response.data
                                 var html = ''
                                 for (var i=0;i<this.user.length;i++) {
-                                    for (var j=0;j<this.user[i].c_roles.length;j++) {
-                                        if (this.user[i].c_roles[j].type != 'Admin') {
-                                            var value = this.user[i].name
-                                            html += '<option value="' + value + '">' + value + '</option>'
-                                        }
-                                    }
+                                    var value = this.user[i].name
+                                    html += '<option value="' + value + '">' + value + '</option>'
                                 }
                                 
                                 var selectUser = $('<select id="user" class="form-control"><option value="" selected>Pilih Semua</option></select>')
