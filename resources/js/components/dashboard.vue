@@ -88,7 +88,7 @@
                             <h4 class="card-title">Notifikasi untuk Anda</h4>
                         </div>
                         <template v-if="dashboard.notification">
-                            <p v-if="dashboard.notification.length > 0" class="card-description">Ada {{ dashboard.notification.length }} notifikasi untuk anda</p>
+                            <p v-if="countnotif > 0" class="card-description">Ada {{ countnotif }} notifikasi untuk anda</p>
                             <p v-else class="card-description">Tidak ada notifikasi apapun</p>
                         </template>
                         <div v-for="(value, counter) in dashboard.notification" :key="counter">
@@ -231,8 +231,10 @@
         data() {
 			return {
                 dashboard: [],
+                countnotif: 0,
                 selectedYear: '',
                 interval: '',
+                timeout: '',
                 intervalChart: ''
             }
         },
@@ -257,6 +259,14 @@
             this.categoryChart()
             this.roomChart()
             this.archiveChart(this.selectedYear)
+            // axios.get('api/dashboardapi').then(response => {
+            //     this.dashboard = response.data
+            //     for (var i = 0; i < this.dashboard.notification.length; i++) {
+            //         for (var j = 0; j < this.dashboard.notification[i].c_racks.length; j++) {
+            //             this.countnotif += this.dashboard.notification[i].c_racks[j].c_archives.length
+            //         }
+            //     }
+            // })
         },
         beforeDestroy() {
             clearInterval(this.interval)
@@ -431,8 +441,14 @@
                 this.archiveChart(this.selectedYear)
             },
             loadData() {
+                this.countnotif = 0
                 axios.get('api/dashboardapi').then(response => {
                     this.dashboard = response.data
+                    for (var i = 0; i < this.dashboard.notification.length; i++) {
+                        for (var j = 0; j < this.dashboard.notification[i].c_racks.length; j++) {
+                            this.countnotif += this.dashboard.notification[i].c_racks[j].c_archives.length
+                        }
+                    }
                 })
             }
         }

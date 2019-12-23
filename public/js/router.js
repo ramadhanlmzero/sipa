@@ -1755,8 +1755,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       dashboard: [],
+      countnotif: 0,
       selectedYear: '',
       interval: '',
+      timeout: '',
       intervalChart: ''
     };
   },
@@ -1780,7 +1782,14 @@ __webpack_require__.r(__webpack_exports__);
     this.selectedYear = moment__WEBPACK_IMPORTED_MODULE_1___default()().format('YYYY');
     this.categoryChart();
     this.roomChart();
-    this.archiveChart(this.selectedYear);
+    this.archiveChart(this.selectedYear); // axios.get('api/dashboardapi').then(response => {
+    //     this.dashboard = response.data
+    //     for (var i = 0; i < this.dashboard.notification.length; i++) {
+    //         for (var j = 0; j < this.dashboard.notification[i].c_racks.length; j++) {
+    //             this.countnotif += this.dashboard.notification[i].c_racks[j].c_archives.length
+    //         }
+    //     }
+    // })
   },
   beforeDestroy: function beforeDestroy() {
     clearInterval(this.interval);
@@ -1978,8 +1987,15 @@ __webpack_require__.r(__webpack_exports__);
     loadData: function loadData() {
       var _this4 = this;
 
+      this.countnotif = 0;
       axios.get('api/dashboardapi').then(function (response) {
         _this4.dashboard = response.data;
+
+        for (var i = 0; i < _this4.dashboard.notification.length; i++) {
+          for (var j = 0; j < _this4.dashboard.notification[i].c_racks.length; j++) {
+            _this4.countnotif += _this4.dashboard.notification[i].c_racks[j].c_archives.length;
+          }
+        }
       });
     }
   }
@@ -65863,11 +65879,11 @@ var render = function() {
               _vm._v(" "),
               _vm.dashboard.notification
                 ? [
-                    _vm.dashboard.notification.length > 0
+                    _vm.countnotif > 0
                       ? _c("p", { staticClass: "card-description" }, [
                           _vm._v(
                             "Ada " +
-                              _vm._s(_vm.dashboard.notification.length) +
+                              _vm._s(_vm.countnotif) +
                               " notifikasi untuk anda"
                           )
                         ])

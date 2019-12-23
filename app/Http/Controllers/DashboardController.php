@@ -22,7 +22,7 @@ class DashboardController extends Controller
             'log' => Archive::with('cUser')->orderBy('created_at', 'DESC')->take(5)->get(),
             'notification' => Room::with('cRacks')->where('user_id', auth()->user()->id)->whereHas('cRacks', function ($query) {
                 $query->whereHas('cArchives', function ($query2) {
-                    $query2->where('status', 'Belum Dikonfirmasi');
+                    $query2->where('status', 'Belum Dikonfirmasi')->take(5);
                 });
             })->take(5)->get(),
             'active' => User::whereHas('cRoles', function ($q) {
