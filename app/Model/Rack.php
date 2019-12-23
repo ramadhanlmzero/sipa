@@ -18,6 +18,6 @@ class Rack extends Model
     }
 
     public function cRoom() {
-        return $this->belongsTo(Room::class, 'room_id', 'id');
+        return $this->belongsTo(Room::class, 'room_id', 'id')->with('cUser');
     }
 }

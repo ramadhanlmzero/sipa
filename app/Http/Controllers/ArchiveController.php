@@ -100,7 +100,7 @@ class ArchiveController extends Controller
      */
     public function show($id)
     {
-        //
+        return Archive::with('cUser', 'cRack', 'cCategory')->find($id);
     }
 
     /**

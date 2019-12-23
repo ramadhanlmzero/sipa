@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('dashboardapi', 'DashboardController@index');
     Route::resource('userapi', 'UserController', ['except' => ['create']]);
     Route::patch('updateuserapi/{any}', 'UserController@renew');
     Route::patch('changepasswordapi/{any}', 'UserController@renewpassword');
@@ -37,7 +38,6 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::patch('confirmarchiveapi/{any}', 'ArchiveController@confirm');
     Route::patch('undoconfirmarchiveapi/{any}', 'ArchiveController@undoconfirm');
 });
-Route::get('dashboardapi', 'DashboardController@index');
 
 Route::group(['prefix'=>'auth'], function () {
     Route::post('register', 'AuthController@register');

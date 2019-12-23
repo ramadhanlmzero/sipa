@@ -20,11 +20,19 @@ class DashboardController extends Controller
             'rack' => Rack::count(),
             'yourarchive' => Archive::where("created_by", Auth::user()->id)->count(),
             'log' => Archive::with('cUser')->orderBy('created_at', 'DESC')->take(5)->get(),
-            'notification' => Room::with('cRacks')->where('user_id', auth()->user()->id)->whereHas('cRacks', function ($query) {
-                $query->whereHas('cArchives', function ($query2) {
+            'notification' => Room::with(['cRacks' => function ($query) {
+                $query->with(['cArchives' => function ($query2) {
+                    $query2->where('status', 'Belum Dikonfirmasi')->take(5);
+                }])->whereHas('cArchives', function ($query2) {
                     $query2->where('status', 'Belum Dikonfirmasi')->take(5);
                 });
-            })->take(5)->get(),
+            }])->where('user_id', auth()->user()->id)->whereHas('cRacks', function ($query) {
+                $query->with(['cArchives' => function ($query2) {
+                    $query2->where('status', 'Belum Dikonfirmasi')->take(5);
+                }])->whereHas('cArchives', function ($query2) {
+                    $query2->where('status', 'Belum Dikonfirmasi')->take(5);
+                });
+            })->get(),
             'active' => User::whereHas('cRoles', function ($q) {
                 $q->where('type', 'Staf Tata Usaha');
             })->withCount('cArchives')->orderBy('c_archives_count', 'DESC')->orderBy('name', 'ASC')->take(5)->get(),

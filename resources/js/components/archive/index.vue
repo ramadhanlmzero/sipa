@@ -77,17 +77,22 @@
                                         <td class="d-none"> {{ getYear(value.created_at) }} </td>
                                         <td class="d-none"> {{ getMonth(value.created_at) }} </td>
                                         <td>
-                                        <template v-for="(item, index) in $auth.user().role">
-                                                <button v-if="value.status === 'Belum Dikonfirmasi' && (item.type === 'Superadmin' || $auth.user().user.id === value.c_rack.c_room.user_id)" type="submit" v-on:click="confirm(value.id)" class="btn btn-success mr-2 p-2" data-toggle="tooltip" title="Konfirmasi status arsip">
-                                                    <i class="fa fa-check"></i>
-                                                </button>
-                                                <router-link v-if="value.status === 'Belum Dikonfirmasi' && $auth.user().user.id === value.c_user.id || item.type === 'Superadmin'" :to="{ path:'/archive/edit/'+value.id }" class="btn btn-primary mr-2 p-2" data-toggle="tooltip" title="Ubah Data">
-                                                    <i class="fa fa-pencil"></i>
-                                                </router-link>
-                                                <button type="submit" v-if="value.status === 'Belum Dikonfirmasi' && $auth.user().user.id === value.c_user.id || item.type === 'Superadmin'" v-on:click="deleteEntry(value.id, counter)" class="btn btn-danger p-2" data-toggle="tooltip" title="Hapus Data">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                        </template>
+                                            <template v-for="(item, index) in $auth.user().role">
+                                                <template v-if="!(index+1 < $auth.user().role.length)">
+                                                    <router-link :to="{ path:'/archive/detail/'+value.id }" class="btn btn-warning mr-2 p-2" data-toggle="tooltip" title="Rincian arsip">
+                                                        <i class="fa fa-eye"></i>
+                                                    </router-link>
+                                                    <button v-if="value.status === 'Belum Dikonfirmasi' && (item.type === 'Superadmin' || $auth.user().user.id === value.c_rack.c_room.user_id)" type="submit" v-on:click="confirm(value.id)" class="btn btn-success mr-2 p-2" data-toggle="tooltip" title="Konfirmasi status arsip">
+                                                        <i class="fa fa-check"></i>
+                                                    </button>
+                                                    <router-link v-if="value.status === 'Belum Dikonfirmasi' &&$auth.user().user.id === value.c_user.id || item.type === 'Superadmin'" :to="{ path:'/archive/edit/'+value.id }" class="btn btn-primary mr-2 p-2" data-toggle="tooltip" title="Ubah Data">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </router-link>
+                                                    <button type="submit" v-if="(value.status === 'Belum Dikonfirmasi' && ($auth.user().user.id === value.c_user.id || $auth.user().user.id === value.c_rack.c_room.user_id)) || (value.status === 'Sudah Dikonfirmasi' && $auth.user().user.id === value.c_rack.c_room.user_id) || item.type === 'Superadmin'" v-on:click="deleteEntry(value.id, counter)" class="btn btn-danger p-2" data-toggle="tooltip" title="Hapus Data">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </template>
+                                            </template>
                                         </td>
                                     </tr>
                                 </tbody>

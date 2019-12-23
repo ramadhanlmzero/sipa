@@ -27,6 +27,7 @@ import rack_edit from './components/rack/edit.vue'
 import archive_index from './components/archive/index.vue'
 import archive_create from './components/archive/create.vue'
 import archive_edit from './components/archive/edit.vue'
+import archive_show from './components/archive/show.vue'
 import user_index from './components/user/index.vue'
 import user_create from './components/user/create.vue'
 import user_edit from './components/user/edit.vue'
@@ -99,6 +100,11 @@ const router = new Router({
                     path: '/archive/edit/:id',
                     name: 'archive_edit',
                     component: archive_edit
+                },
+                {
+                    path: '/archive/detail/:id',
+                    name: 'archive_show',
+                    component: archive_show
                 },
                 {
                     path: '/category',

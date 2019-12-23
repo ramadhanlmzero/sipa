@@ -837,6 +837,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -1076,6 +1081,130 @@ __webpack_require__.r(__webpack_exports__);
     getDate: function getDate(value) {
       moment__WEBPACK_IMPORTED_MODULE_2___default.a.locale('id');
       return moment__WEBPACK_IMPORTED_MODULE_2___default()(value).format('D');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/archive/show.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/archive/show.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'archive_show',
+  data: function data() {
+    return {
+      archive: ''
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/archiveapi/' + this.$route.params.id).then(function (response) {
+      _this.archive = response.data;
+      console.log(_this.archive);
+    })["catch"](function (error) {
+      _this.$router.push({
+        name: 'notfound'
+      });
+    });
+  },
+  methods: {
+    parseDate: function parseDate(value) {
+      moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale('id');
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()(value).format('D MMMM YYYY H:mm:ss');
     }
   }
 });
@@ -64723,73 +64852,114 @@ var render = function() {
                               index
                             ) {
                               return [
-                                value.status === "Belum Dikonfirmasi" &&
-                                (item.type === "Superadmin" ||
-                                  _vm.$auth.user().user.id ===
-                                    value.c_rack.c_room.user_id)
-                                  ? _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-success mr-2 p-2",
-                                        attrs: {
-                                          type: "submit",
-                                          "data-toggle": "tooltip",
-                                          title: "Konfirmasi status arsip"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.confirm(value.id)
+                                !(index + 1 < _vm.$auth.user().role.length)
+                                  ? [
+                                      _c(
+                                        "router-link",
+                                        {
+                                          staticClass:
+                                            "btn btn-warning mr-2 p-2",
+                                          attrs: {
+                                            to: {
+                                              path:
+                                                "/archive/detail/" + value.id
+                                            },
+                                            "data-toggle": "tooltip",
+                                            title: "Rincian arsip"
                                           }
-                                        }
-                                      },
-                                      [_c("i", { staticClass: "fa fa-check" })]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                (value.status === "Belum Dikonfirmasi" &&
-                                  _vm.$auth.user().user.id ===
-                                    value.c_user.id) ||
-                                item.type === "Superadmin"
-                                  ? _c(
-                                      "router-link",
-                                      {
-                                        staticClass: "btn btn-primary mr-2 p-2",
-                                        attrs: {
-                                          to: {
-                                            path: "/archive/edit/" + value.id
-                                          },
-                                          "data-toggle": "tooltip",
-                                          title: "Ubah Data"
-                                        }
-                                      },
-                                      [_c("i", { staticClass: "fa fa-pencil" })]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                (value.status === "Belum Dikonfirmasi" &&
-                                  _vm.$auth.user().user.id ===
-                                    value.c_user.id) ||
-                                item.type === "Superadmin"
-                                  ? _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-danger p-2",
-                                        attrs: {
-                                          type: "submit",
-                                          "data-toggle": "tooltip",
-                                          title: "Hapus Data"
                                         },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.deleteEntry(
-                                              value.id,
-                                              counter
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [_c("i", { staticClass: "fa fa-trash" })]
-                                    )
+                                        [_c("i", { staticClass: "fa fa-eye" })]
+                                      ),
+                                      _vm._v(" "),
+                                      value.status === "Belum Dikonfirmasi" &&
+                                      (item.type === "Superadmin" ||
+                                        _vm.$auth.user().user.id ===
+                                          value.c_rack.c_room.user_id)
+                                        ? _c(
+                                            "button",
+                                            {
+                                              staticClass:
+                                                "btn btn-success mr-2 p-2",
+                                              attrs: {
+                                                type: "submit",
+                                                "data-toggle": "tooltip",
+                                                title: "Konfirmasi status arsip"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.confirm(value.id)
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-check"
+                                              })
+                                            ]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      (value.status === "Belum Dikonfirmasi" &&
+                                        _vm.$auth.user().user.id ===
+                                          value.c_user.id) ||
+                                      item.type === "Superadmin"
+                                        ? _c(
+                                            "router-link",
+                                            {
+                                              staticClass:
+                                                "btn btn-primary mr-2 p-2",
+                                              attrs: {
+                                                to: {
+                                                  path:
+                                                    "/archive/edit/" + value.id
+                                                },
+                                                "data-toggle": "tooltip",
+                                                title: "Ubah Data"
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-pencil"
+                                              })
+                                            ]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      (value.status === "Belum Dikonfirmasi" &&
+                                        (_vm.$auth.user().user.id ===
+                                          value.c_user.id ||
+                                          _vm.$auth.user().user.id ===
+                                            value.c_rack.c_room.user_id)) ||
+                                      (value.status === "Sudah Dikonfirmasi" &&
+                                        _vm.$auth.user().user.id ===
+                                          value.c_rack.c_room.user_id) ||
+                                      item.type === "Superadmin"
+                                        ? _c(
+                                            "button",
+                                            {
+                                              staticClass: "btn btn-danger p-2",
+                                              attrs: {
+                                                type: "submit",
+                                                "data-toggle": "tooltip",
+                                                title: "Hapus Data"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.deleteEntry(
+                                                    value.id,
+                                                    counter
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-trash"
+                                              })
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
                                   : _vm._e()
                               ]
                             })
@@ -64883,6 +65053,217 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/archive/show.vue?vue&type=template&id=b4bf0216&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/archive/show.vue?vue&type=template&id=b4bf0216& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "tombol" },
+      [
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-gradient btn-fw mr-3",
+            attrs: { to: { path: "/account/edit/" + _vm.$auth.user().user.id } }
+          },
+          [_vm._v("\n            Perbarui Data Akun\n        ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-warning btn-fw",
+            attrs: {
+              to: { path: "/account/reset/" + _vm.$auth.user().user.id }
+            }
+          },
+          [_vm._v("\n            Ubah Password\n        ")]
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("h4", { staticClass: "card-title" }, [
+          _vm._v("Rincian Arsip " + _vm._s(_vm.archive.title))
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Nomor Arsip")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(": " + _vm._s(_vm.archive.number))])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Judul Arsip")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(": " + _vm._s(_vm.archive.title))])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Diunggah oleh ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(": " + _vm._s(_vm.archive.c_user.name))])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Kategori Arsip")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(": " + _vm._s(_vm.archive.c_category.name))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Ruang Penyimpanan Arsip")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        ": " +
+                          _vm._s(_vm.archive.c_rack.c_room.name) +
+                          " (Admin: " +
+                          _vm._s(_vm.archive.c_rack.c_room.c_user.name) +
+                          ")"
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Rak Penyimpanan Arsip")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(": " + _vm._s(_vm.archive.c_rack.name))])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Status Arsip")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(":\n                                        "),
+                      _vm.archive.status === "Sudah Dikonfirmasi"
+                        ? _c(
+                            "div",
+                            { staticClass: "badge badge-success badge-fw" },
+                            [
+                              _vm._v(
+                                "\n                                            Accepted\n                                        "
+                              )
+                            ]
+                          )
+                        : _c(
+                            "div",
+                            { staticClass: "badge badge-warning badge-fw" },
+                            [
+                              _vm._v(
+                                "\n                                            Not accepted\n                                        "
+                              )
+                            ]
+                          )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Download Arsip")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(":\n                                        "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-info mr-2 p-2",
+                          attrs: {
+                            href: "/storage/archive/" + _vm.archive.file,
+                            target: "_blank",
+                            "data-toggle": "tooltip",
+                            title: "Download file"
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-download" })]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Catatan")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(": " + _vm._s(_vm.archive.note))])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Terakhir Diunggah")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        ": " + _vm._s(_vm.parseDate(_vm.archive.created_at))
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { width: "300px" } }, [
+                      _vm._v("Terakhir Diperbarui")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        ": " + _vm._s(_vm.parseDate(_vm.archive.updated_at))
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -84241,6 +84622,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/archive/show.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/archive/show.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _show_vue_vue_type_template_id_b4bf0216___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./show.vue?vue&type=template&id=b4bf0216& */ "./resources/js/components/archive/show.vue?vue&type=template&id=b4bf0216&");
+/* harmony import */ var _show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./show.vue?vue&type=script&lang=js& */ "./resources/js/components/archive/show.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _show_vue_vue_type_template_id_b4bf0216___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _show_vue_vue_type_template_id_b4bf0216___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/archive/show.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/archive/show.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/archive/show.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/archive/show.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/archive/show.vue?vue&type=template&id=b4bf0216&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/archive/show.vue?vue&type=template&id=b4bf0216& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_template_id_b4bf0216___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./show.vue?vue&type=template&id=b4bf0216& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/archive/show.vue?vue&type=template&id=b4bf0216&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_template_id_b4bf0216___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_template_id_b4bf0216___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/auth/403.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/auth/403.vue ***!
@@ -86042,12 +86492,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_archive_index_vue__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/archive/index.vue */ "./resources/js/components/archive/index.vue");
 /* harmony import */ var _components_archive_create_vue__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/archive/create.vue */ "./resources/js/components/archive/create.vue");
 /* harmony import */ var _components_archive_edit_vue__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/archive/edit.vue */ "./resources/js/components/archive/edit.vue");
-/* harmony import */ var _components_user_index_vue__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/user/index.vue */ "./resources/js/components/user/index.vue");
-/* harmony import */ var _components_user_create_vue__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/user/create.vue */ "./resources/js/components/user/create.vue");
-/* harmony import */ var _components_user_edit_vue__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/user/edit.vue */ "./resources/js/components/user/edit.vue");
+/* harmony import */ var _components_archive_show_vue__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/archive/show.vue */ "./resources/js/components/archive/show.vue");
+/* harmony import */ var _components_user_index_vue__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/user/index.vue */ "./resources/js/components/user/index.vue");
+/* harmony import */ var _components_user_create_vue__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/user/create.vue */ "./resources/js/components/user/create.vue");
+/* harmony import */ var _components_user_edit_vue__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/user/edit.vue */ "./resources/js/components/user/edit.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
 
 
 
@@ -86132,6 +86584,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/archive/edit/:id',
       name: 'archive_edit',
       component: _components_archive_edit_vue__WEBPACK_IMPORTED_MODULE_26__["default"]
+    }, {
+      path: '/archive/detail/:id',
+      name: 'archive_show',
+      component: _components_archive_show_vue__WEBPACK_IMPORTED_MODULE_27__["default"]
     }, {
       path: '/category',
       name: 'category_index',
@@ -86291,7 +86747,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }, {
       path: '/user',
       name: 'user_index',
-      component: _components_user_index_vue__WEBPACK_IMPORTED_MODULE_27__["default"],
+      component: _components_user_index_vue__WEBPACK_IMPORTED_MODULE_28__["default"],
       meta: {
         auth: {
           roles: ['Superadmin'],
@@ -86304,7 +86760,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }, {
       path: '/user/create',
       name: 'user_create',
-      component: _components_user_create_vue__WEBPACK_IMPORTED_MODULE_28__["default"],
+      component: _components_user_create_vue__WEBPACK_IMPORTED_MODULE_29__["default"],
       meta: {
         auth: {
           roles: ['Superadmin'],
@@ -86317,7 +86773,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }, {
       path: '/user/edit/:id',
       name: 'user_edit',
-      component: _components_user_edit_vue__WEBPACK_IMPORTED_MODULE_29__["default"],
+      component: _components_user_edit_vue__WEBPACK_IMPORTED_MODULE_30__["default"],
       meta: {
         auth: {
           roles: ['Superadmin'],
@@ -86367,7 +86823,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\router.js */"./resources/js/router.js");
+module.exports = __webpack_require__(/*! e:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\router.js */"./resources/js/router.js");
 
 
 /***/ })
