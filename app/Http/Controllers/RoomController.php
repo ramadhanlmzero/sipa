@@ -18,7 +18,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return Room::with('cUser', 'cRacks.cArchives')->get();
+        return Room::with('cUser', 'cRacks', 'cArchives')->get();
     }
 
     public function checkRoom()

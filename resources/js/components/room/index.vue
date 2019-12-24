@@ -30,14 +30,7 @@
                                         <td>{{ value.name }}</td>
                                         <td>{{ value.c_user.name }}</td>
                                         <td>{{ value.c_racks.length }}</td>
-                                        <td>
-                                            <span v-if="value.c_racks.length > 0">
-                                                <span v-for="(item, key) in value.c_racks" :key="key">
-                                                    {{ item.c_archives.length }}
-                                                </span>
-                                            </span>
-                                            <span v-else>0</span>
-                                        </td>
+                                        <td>{{ value.c_archives.length }}</td>
                                         <td>
                                             <router-link :to="{ path:'/room/edit/'+value.id }" class="btn btn-primary mr-2 p-2" data-toggle="tooltip" title="Ubah Data">
                                                 <i class="fa fa-pencil"></i>

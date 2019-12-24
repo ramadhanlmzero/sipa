@@ -6033,13 +6033,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -98231,23 +98224,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(value.c_racks.length))]),
                         _vm._v(" "),
-                        _c("td", [
-                          value.c_racks.length > 0
-                            ? _c(
-                                "span",
-                                _vm._l(value.c_racks, function(item, key) {
-                                  return _c("span", { key: key }, [
-                                    _vm._v(
-                                      "\n                                                " +
-                                        _vm._s(item.c_archives.length) +
-                                        "\n                                            "
-                                    )
-                                  ])
-                                }),
-                                0
-                              )
-                            : _c("span", [_vm._v("0")])
-                        ]),
+                        _c("td", [_vm._v(_vm._s(value.c_archives.length))]),
                         _vm._v(" "),
                         _c(
                           "td",
