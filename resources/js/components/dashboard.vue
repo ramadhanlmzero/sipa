@@ -96,7 +96,7 @@
                                 <div class="list d-flex align-items-center border-bottom py-3" v-for="(archive, counter3) in rack.c_archives" :key="counter3">
                                     <img class="img-sm rounded-circle" src="/assets/images/admin-pic.png">
                                     <div class="wrapper w-100 ml-3">
-                                        <p class="mb-0"><b>{{ archive.c_user.name }} </b>memasukkan arsip {{ archive.title }} ke ruang {{ value.name }} anda</p>
+                                        <p class="mb-0"><b>{{ archive.c_user.name }} </b>memasukkan arsip {{ archive.title }} ke {{ value.name }} anda</p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="d-flex align-items-center">
                                                 <i class="mdi mdi-clock text-muted mr-1"></i>

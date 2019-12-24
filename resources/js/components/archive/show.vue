@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="tombol">
-            <router-link :to="{ path:'/account/edit/'+$auth.user().user.id }" class="btn btn-gradient btn-fw mr-3">
-                Perbarui Data Akun
+            <router-link :to="{ path:'/archive/' }" class="btn btn-info btn-fw mr-3">
+                Kembali
             </router-link>
-            <router-link :to="{ path:'/account/reset/'+$auth.user().user.id }" class="btn btn-warning btn-fw">
-                Ubah Password
+            <router-link :to="{ path:'/archive/edit/' + archive.id }" class="btn btn-gradient btn-fw">
+                Ubah Data
             </router-link>
         </div>
         <div class="card">
@@ -87,14 +87,22 @@
         name: 'archive_show',
         data() {
 			return {
-                archive: ''
+                archive: {
+                    c_rack: {
+                        c_room: {
+                            c_user: ''
+                        }
+                    },
+                    c_archive: '',
+                    c_category: '',
+                    c_user: ''
+                }
             }
         },
         mounted() {
             axios.get('/api/archiveapi/' + this.$route.params.id)
             .then(response => {
                 this.archive = response.data
-                console.log(this.archive)
             }).catch(error => {
                 this.$router.push({name: 'notfound'})
             })

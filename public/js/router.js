@@ -1186,7 +1186,16 @@ __webpack_require__.r(__webpack_exports__);
   name: 'archive_show',
   data: function data() {
     return {
-      archive: ''
+      archive: {
+        c_rack: {
+          c_room: {
+            c_user: ''
+          }
+        },
+        c_archive: '',
+        c_category: '',
+        c_user: ''
+      }
     };
   },
   mounted: function mounted() {
@@ -1194,7 +1203,6 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/api/archiveapi/' + this.$route.params.id).then(function (response) {
       _this.archive = response.data;
-      console.log(_this.archive);
     })["catch"](function (error) {
       _this.$router.push({
         name: 'notfound'
@@ -65082,21 +65090,19 @@ var render = function() {
         _c(
           "router-link",
           {
-            staticClass: "btn btn-gradient btn-fw mr-3",
-            attrs: { to: { path: "/account/edit/" + _vm.$auth.user().user.id } }
+            staticClass: "btn btn-info btn-fw mr-3",
+            attrs: { to: { path: "/archive/" } }
           },
-          [_vm._v("\n            Perbarui Data Akun\n        ")]
+          [_vm._v("\n            Kembali\n        ")]
         ),
         _vm._v(" "),
         _c(
           "router-link",
           {
-            staticClass: "btn btn-warning btn-fw",
-            attrs: {
-              to: { path: "/account/reset/" + _vm.$auth.user().user.id }
-            }
+            staticClass: "btn btn-gradient btn-fw",
+            attrs: { to: { path: "/archive/edit/" + _vm.archive.id } }
           },
-          [_vm._v("\n            Ubah Password\n        ")]
+          [_vm._v("\n            Ubah Data\n        ")]
         )
       ],
       1
@@ -66293,7 +66299,7 @@ var render = function() {
                                 _vm._v(
                                   "memasukkan arsip " +
                                     _vm._s(archive.title) +
-                                    " ke ruang " +
+                                    " ke " +
                                     _vm._s(value.name) +
                                     " anda"
                                 )
