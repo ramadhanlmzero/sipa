@@ -45,7 +45,12 @@ SIPA merupakan project yang secara khusus dibuat untuk UAS Mata Kuliah Pemrogram
     php artisan migrate
     ```
    
-8. Setelah itu program dapat dijalankan dengan mengetik pada terminal :
+8. Jangan lupa lakukan symlink pada folder storage dengan mengetik pada terminal :
+    ```
+    php artisan Storage:link
+    ```
+    
+9. Setelah itu program dapat dijalankan dengan mengetik pada terminal :
     ```
     php artisan serve
     ```
