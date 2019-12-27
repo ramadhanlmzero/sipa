@@ -1322,6 +1322,78 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "login",
   data: function data() {
@@ -1335,7 +1407,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     login: function login() {
-      // var redirect = this.$auth.redirect()
       this.$auth.login({
         params: {
           email: this.email,
@@ -18443,7 +18514,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.auth .login-half-bg[data-v-6aa0b866] {\n    background: url(/assets/images/login-pic.jpg);\n    background-size: cover;\n}\n.auth form .form-group i[data-v-6aa0b866] {\n    top: calc(53%);\n}\n", ""]);
+exports.push([module.i, "\n.auth .login-half-bg[data-v-6aa0b866] {\n    background: url(/assets/images/login-pic.jpg);\n    background-size: cover;\n}\n.auth form .form-group i[data-v-6aa0b866] {\n    top: calc(53%);\n}\n.list[data-v-6aa0b866] {\n    padding-left: 0;\n    padding-right: 0\n}\n.list-item[data-v-6aa0b866] {\n    position: relative;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    min-width: 0;\n    word-wrap: break-word\n}\n.list-row .list-item[data-v-6aa0b866] {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n            flex-direction: row;\n    -webkit-box-align: center;\n            align-items: center;\n    padding: .75rem .625rem\n}\n.list-row .list-item>*[data-v-6aa0b866] {\n    padding-left: .625rem;\n    padding-right: .625rem\n}\n.no-wrap[data-v-6aa0b866] {\n    white-space: nowrap\n}\n.avatar[data-v-6aa0b866] {\n    position: relative;\n    line-height: 1;\n    border-radius: 500px;\n    white-space: nowrap;\n    font-weight: 700;\n    border-radius: 100%;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n            align-items: center;\n    flex-shrink: 0;\n    border-radius: 500px;\n    box-shadow: 0 5px 10px 0 rgba(50, 50, 50, .15)\n}\n.avatar img[data-v-6aa0b866] {\n    border-radius: inherit;\n    width: 100%\n}\n.text-sm[data-v-6aa0b866] {\n    font-size: .825rem\n}\n.h-1x[data-v-6aa0b866] {\n    height: 1.25rem;\n    overflow: hidden;\n    display: -webkit-box;\n    -webkit-line-clamp: 1;\n    -webkit-box-orient: vertical\n}\n.w-48[data-v-6aa0b866] {\n    width: 48px !important;\n    height: 48px !important\n}\n", ""]);
 
 // exports
 
@@ -65600,20 +65671,218 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-lg-6 login-half-bg d-flex flex-row" },
-      [
+    return _c("div", { staticClass: "col-lg-6 bg-white py-4" }, [
+      _c("div", { staticClass: "list list-row my-4" }, [
+        _c("h6", { staticClass: "font-weight-bold" }, [
+          _vm._v("Anggota Dicode Team")
+        ]),
+        _vm._v(" "),
         _c(
-          "p",
-          {
-            staticClass:
-              "text-black font-weight-medium text-center flex-grow align-self-end"
-          },
-          [_vm._v("Developed by Dicode Team")]
+          "div",
+          { staticClass: "list-item mb-3", attrs: { "data-id": "19" } },
+          [
+            _c("div", [
+              _c("span", { staticClass: "w-48 avatar gd-primary" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://siakadu.unesa.ac.id/photo/fotomhs/16051204011.jpg",
+                    height: "74",
+                    alt: "Mazidhatul Ilmiyah"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex col-md-7" }, [
+              _c("span", { staticClass: "item-author text-primary" }, [
+                _vm._v("Mazidhatul Ilmiyah")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "item-except text-muted text-sm h-1x" },
+                [_vm._v("Designer")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "no-wrap col-md" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "item-date text-muted text-sm d-none d-md-block"
+                },
+                [_vm._v("16051204011")]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "list-item mb-3", attrs: { "data-id": "7" } },
+          [
+            _c("div", [
+              _c("span", { staticClass: "w-48 avatar gd-primary" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://siakadu.unesa.ac.id/photo/fotomhs/16051204013.jpg",
+                    height: "74",
+                    alt: "Dyah Hediyati"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex col-md-7" }, [
+              _c("span", { staticClass: "item-author text-primary" }, [
+                _vm._v("Dyah Hediyati")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "item-except text-muted text-sm h-1x" },
+                [_vm._v("Proposal Author")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "no-wrap col-md" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "item-date text-muted text-sm d-none d-md-block"
+                },
+                [_vm._v("16051204013")]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "list-item mb-3", attrs: { "data-id": "17" } },
+          [
+            _c("div", [
+              _c("span", { staticClass: "w-48 avatar gd-primary" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://siakadu.unesa.ac.id/photo/fotomhs/16051204017.jpg",
+                    height: "74",
+                    alt: "Muhamad Ramadhan"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex col-md-7" }, [
+              _c("span", { staticClass: "item-author text-primary" }, [
+                _vm._v("Muhamad Ramadhan")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "item-except text-muted text-sm h-1x" },
+                [_vm._v("Programmer")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "no-wrap col-md" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "item-date text-muted text-sm d-none d-md-block"
+                },
+                [_vm._v("16051204017")]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "list-item mb-3", attrs: { "data-id": "16" } },
+          [
+            _c("div", [
+              _c("span", { staticClass: "w-48 avatar gd-primary" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://siakadu.unesa.ac.id/photo/fotomhs/16051204042.jpg",
+                    height: "74",
+                    alt: "Ahmad Rizki Maulana"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex col-md-7" }, [
+              _c("span", { staticClass: "item-author text-primary" }, [
+                _vm._v("Ahmad Rizki Maulana")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "item-except text-muted text-sm h-1x" },
+                [_vm._v("Administrator Web")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "no-wrap col-md" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "item-date text-muted text-sm d-none d-md-block"
+                },
+                [_vm._v("16051204042")]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "list-item mb-3", attrs: { "data-id": "4" } },
+          [
+            _c("div", [
+              _c("span", { staticClass: "w-48 avatar gd-primary" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://siakadu.unesa.ac.id/photo/fotomhs/16051204043.jpg",
+                    height: "74",
+                    alt: "Farid Fajar Shodiq"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex col-md-7" }, [
+              _c("span", { staticClass: "item-author text-primary" }, [
+                _vm._v("Farid Fajar Shodiq")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "item-except text-muted text-sm h-1x" },
+                [_vm._v("Administrator Web")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "no-wrap col-md" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "item-date text-muted text-sm d-none d-md-block"
+                },
+                [_vm._v("16051204043")]
+              )
+            ])
+          ]
         )
-      ]
-    )
+      ])
+    ])
   }
 ]
 render._withStripped = true
