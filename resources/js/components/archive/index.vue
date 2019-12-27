@@ -48,7 +48,7 @@
                                         <th class="d-none">Tanggal Dibuat</th>
                                         <th class="d-none">Tahun</th>
                                         <th class="d-none">Bulan</th>
-                                        <th width="180px">Aksi</th>
+                                        <th width="200px">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>

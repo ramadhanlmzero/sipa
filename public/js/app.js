@@ -95160,7 +95160,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { staticClass: "d-none" }, [_vm._v("Bulan")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "180px" } }, [_vm._v("Aksi")])
+        _c("th", { attrs: { width: "200px" } }, [_vm._v("Aksi")])
       ])
     ])
   }
@@ -117431,8 +117431,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! e:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! e:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\Proyek Teknik Informatika\Web\SIPA\SIPA\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
