@@ -25,7 +25,7 @@
     },
     "dependencies": {
         "@websanova/vue-auth": "^2.21.14-beta",
-        "chart.js": "^2.8.0",
+        "chart.js": "^2.9.4",
         "datatables.net": "^1.10.19",
         "datatables.net-bs4": "^1.10.19",
         "es6-promise": "^4.2.8",
